@@ -1,9 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
-import { TranslateService } from '../services/translate/translate.service';
-import { WordQueueService } from '../services/word-queue/word-queue.service';
-import { StorageService } from '../services/storage/storage.service';
-import { Word } from '../app.interfaces';
+import { TranslateService } from '../../services/translate/translate.service';
+import { WordQueueService } from '../../services/word-queue/word-queue.service';
+import { StorageService } from '../../services/storage/storage.service';
+import { Word } from '../../app.interfaces';
 
 @Component({
   selector: 'app-recently-added-page',

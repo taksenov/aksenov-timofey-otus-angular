@@ -15,10 +15,10 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecentlyAddedPageComponent } from './recently-added-page/recently-added-page.component';
-import { HeaderComponent } from './header/header.component';
-import { GoPageComponent } from './go-page/go-page.component';
-import { SettingsPageComponent } from './settings-page/settings-page.component';
+import { RecentlyAddedPageComponent } from './views/recently-added-page/recently-added-page.component';
+import { HeaderComponent } from './views/header/header.component';
+import { GoPageComponent } from './views/go-page/go-page.component';
+import { SettingsPageComponent } from './views/settings-page/settings-page.component';
 import { StorageService } from './services/storage/storage.service';
 
 @NgModule({
