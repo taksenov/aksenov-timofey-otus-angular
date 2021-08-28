@@ -16,6 +16,7 @@ export class GoPageComponent implements OnInit {
   turn!: number;
   result!: number;
   message!: string;
+  gameDisabled!: boolean;
   level!: number;
 
   constructor(private storage: StorageService) {}
@@ -55,7 +56,8 @@ export class GoPageComponent implements OnInit {
     this.level = this.storage.getLevel();
     this.wordList = this.storage.getDictFromStorage();
     this.currentWord = this.getRandomWord();
-    this.message = this.currentWord.word;
+    this.message = this?.currentWord?.word ?? 'Игра не возможна! Требуется заполнить "Словарь"';
+    this.gameDisabled = this.message === 'Игра не возможна! Требуется заполнить "Словарь"' ? true : false;
     this.disableInput = false;
   }
 

@@ -8,14 +8,14 @@ import { Language, Word } from '../../app.interfaces';
 })
 export class StorageService {
   private localStorage = window.localStorage;
-  private lang: Language = { display: 'Английский', value: 'ru-en' };
+  private lang: Language = { display: 'Английский', value: 'ru|en' };
   private level = 5;
 
   constructor() {}
 
   getDictFromStorage(): Array<Word> {
     const arr = JSON.parse(
-      this?.localStorage?.getItem(this?.lang?.value ?? '') ?? '',
+      this?.localStorage?.getItem(this?.lang?.value ?? '') ?? '[]',
     );
     return arr instanceof Array ? arr : [];
   }
