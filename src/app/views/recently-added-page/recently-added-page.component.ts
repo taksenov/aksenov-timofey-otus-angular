@@ -1,6 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
-import { TranslateService } from '../../services/translate/translate.service';
 import { WordQueueService } from '../../services/word-queue/word-queue.service';
 import { StorageService } from '../../services/storage/storage.service';
 import { Word } from '../../app.interfaces';
@@ -9,7 +8,7 @@ import { Word } from '../../app.interfaces';
   selector: 'app-recently-added-page',
   templateUrl: './recently-added-page.component.html',
   styleUrls: ['./recently-added-page.component.css'],
-  providers: [TranslateService, WordQueueService],
+  providers: [WordQueueService],
 })
 export class RecentlyAddedPageComponent implements OnInit, OnChanges {
   dict: Array<Word> = [];
@@ -19,7 +18,6 @@ export class RecentlyAddedPageComponent implements OnInit, OnChanges {
   dictItems: Array<Word> = [];
 
   constructor(
-    private translateService: TranslateService,
     private wordQueueService: WordQueueService,
     private storageService: StorageService,
   ) {}

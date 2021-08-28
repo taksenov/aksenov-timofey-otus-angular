@@ -1,18 +1,18 @@
 <mat-card>
   <mat-card-content>
     <mat-accordion>
-        <mat-list dense>
+        <!-- <mat-list dense>
           <mat-list-item *ngFor="let dictItem of dict">
             • {{ dictItem.word }}: {{ dictItem.translate }}
           </mat-list-item>
-        </mat-list>
+        </mat-list> -->
     </mat-accordion>
   </mat-card-content>
   <mat-card-content *ngIf="isAdd">
     <mat-grid-list cols="4" rowHeight="64px">
       <mat-grid-tile colspan="3">
         <mat-form-field>
-          <input matInput placeholder="Новые слова или фразы (через точку)"
+          <input matInput placeholder="Новое слово"
                  [(ngModel)]="userInput">
         </mat-form-field>
       </mat-grid-tile>
@@ -26,7 +26,7 @@
     </mat-grid-list>
     <mat-list *ngIf="dictItems">
       <mat-list-item *ngFor="let dictItem of dictItems">
-        • {{ dictItem.word }}: {{ dictItem.translate }}
+        {{ dictItem.word }}: {{ dictItem.translate }}
       </mat-list-item>
     </mat-list>
   </mat-card-content>

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, retry, switchMap } from 'rxjs/operators';
+import { get } from 'lodash';
+
 import { StorageService } from '../storage/storage.service';
 
 @Injectable({
@@ -16,18 +18,16 @@ export class TranslateService {
   getDictItem(word: string): Observable<{ word: string; translate: string }> {
     const lang = this.storageService.getLang().value;
     return of(word).pipe(
-      switchMap((item) =>
-        this.http.get(
-          // FIXME: Доработать ручку АПИ см. https://mymemory.translated.net/doc/spec.php
-          `https://api.mymemory.translated.net/get?q=Hello World!&langpair=en|ru`,
+      switchMap((item) => this.http.get(
+          `https://api.mymemory.translated.net/get?q=${item}&langpair=${lang}`,
         ),
       ),
       retry(3),
       map((item) => {
-        const { text }: any = item;
+        const text = get(item, 'responseData.translatedText', word) ?? word;
         return {
-          word,
-          translate: text[0],
+          word: word.toLowerCase(),
+          translate: text.toLowerCase(),
         };
       }),
     );
